@@ -33,7 +33,7 @@ html, body {
 	background-color:yellow;
 }
 
-#jqt ul.edgefullcontent li.blog-title a{
+#jqt ul.edgefullcontent li.blog-content a{
 	color: #2E5CA9;
 }
 
@@ -41,11 +41,11 @@ html, body {
 
 <link rel="stylesheet" href="<?php echo $plugin_url ?>/src/apple.css"/>
 <link rel="stylesheet" href="<?php echo $plugin_url ?>/src/itabbar.css"/><!--CSS order are important -->
-<link rel="stylesheet" href="<?php echo $plugin_url ?>/src/style.css"/>
+<link rel="stylesheet" href="<?php echo $plugin_url ?>/src/style.min.css"/>
 
 <script type="text/javascript" src="<?php echo $plugin_url ?>/src/iscroll.min.js"></script>
-<script type='text/javascript' src='<?php echo $plugin_url ?>/src/zepto.min.0.8.js'></script> 
-<script type='text/javascript' src='<?php echo $plugin_url ?>/src/jqtouch-form.js'></script>  
+<script type='text/javascript' src='<?php echo $plugin_url ?>/src/zepto.min.js'></script> 
+<script type='text/javascript' src='<?php echo $plugin_url ?>/src/jqtouch.min.js'></script>  
 
 <script type='text/javascript' src='<?php echo $plugin_url ?>/src/jqt.autotitles.min.js'></script>  
 
@@ -59,10 +59,6 @@ var INDEX_URL = '<?php echo $template_url; ?>/'; // Main url
 var PLUGIN_URL = '<?php echo $plugin_url; ?>/'; // Main url
 var BLOG_TITLE = '<?php echo get_bloginfo( 'name' ) ?>';
 var BLOG_DESC = '<?php echo get_bloginfo( 'description' ); ?>';
-
-$(document).ready(function() {
-$('.scroll').wrap('<div id="wrapper" />').attr('id', 'scroller');
-}); // end document ready
 
 var myScroll;
 function loaded() {
@@ -175,14 +171,16 @@ $('#home').bind('pageAnimationEnd', function(e, info) {
 
                 if (post.title !== undefined) {
 
-					var post_html = '<ul class="edgefullcontent"><li class=""><div id="previous"><a class="singlenext" id="' + post.prev_post + '" href="#"><span class="nxtarrow"><</span> PREVIOUS</a></div><div id="next"><a class="singlenext" id="' + post.next_post + '" href="#">NEXT <span class="nxtarrow">></span> </a></div></li>';
-					post_html += '<li class="blog-title">';
+					var post_html = '<ul class="edgefullcontent">';
+					post_html += '<li class="blog-content">';
 					post_html += '<span class="info_post" id="cat" style=" float: right;  padding-right: 5px ;" > ' + post.category + '</span>';
                     post_html += '<span class="info_post">' + post.date + '</span>';
 					post_html += '<h1>' + post.title + '</h1>';					
 					if (post.fimg) post_html += post.fimg ;
-                    post_html += '<p>' + post.content + '</p></li></ul>';
-                    $('#singleappend').html(post_html);
+                    post_html += '<p>' + post.content + '</p></li>';
+					post_html += '<li class=""><div class="previous"><a class="singlenext" id="' + post.prev_post + '" href="#"><span class="nxtarrow"><</span> PREVIOUS</a></div><div class="next"><a class="singlenext" id="' + post.next_post + '" href="#">NEXT <span class="nxtarrow">></span> </a></div></li></ul>';
+                   
+				    $('#singleappend').html(post_html);
 					
 						if (myScroll) {
                             myScroll.destroy();
@@ -198,15 +196,6 @@ $('#home').bind('pageAnimationEnd', function(e, info) {
 					
 					getid();
 					
-					$('a[target="_blank"]').bind('click', function() {
-                    if (confirm('This link opens in a new window.')) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                	});
-
-					
 					nextprev(post.prev_post, post.next_post, post.category);
 					
 					
@@ -218,10 +207,13 @@ $('#home').bind('pageAnimationEnd', function(e, info) {
                 } // if post.title !== undefined
 				
 				videosize();
-				setTimeout(function () {myScroll.refresh();}, 2000);
 				
             }); //each
+				
+				
+				setTimeout(function () {myScroll.refresh();}, 2000);
 				hideLoading();
+				target_blank();
 
         }); //getjson
 		} //if direction in
@@ -237,6 +229,7 @@ if ((info.direction == 'in') && ($('ul#catappend').html())) {
  //alert('empty sid = '+sid);
 	$("#postcat").empty();
 	$("#showposts .toolbar H1").empty();
+	$("#showposts .toolbar .back").html('Section');
 	s = 0;
 	//alert('not loading')
 
@@ -255,6 +248,7 @@ if ((info.direction == 'in') && ($('ul#catappend').html())) {
 
     if ((info.direction == 'in') && ($('ul#catappend').is(':empty'))) { //if empty load ajax
         $("#showposts .toolbar H1").empty();
+		$("#showposts .toolbar .back").html('Section');
 		//$("#catappend").empty();
 		//alert('first load')
             var wp_url = PLUGIN_URL + 'get_category.php';
@@ -281,7 +275,7 @@ if ((info.direction == 'in') && ($('ul#catappend').html())) {
 
                     if (categories.cat_name !== undefined) {                     
 
-                        var post_html = '<li class="blog-title arrow"><a onTouchStart="send(' + categories.id + ')" id=' + categories.id + ' href="#showposts" class="cat">';
+                        var post_html = '<li class="blog-content arrow"><a onClick="send(' + categories.id + ')" id=' + categories.id + ' href="#showposts" class="cat">';
                         post_html += categories.cat_name + '</a></li>';
                         $('#catappend').append(post_html);
 						
@@ -318,14 +312,15 @@ $("#singleappend").empty();
 }
 
 	if ((info.direction == 'in') && ($('ul#postcat').is(':empty'))) { //if empty load ajax
-	$("#single .toolbar H1").empty(); // empty single H1 title for autotitle
-	//alert('is empty')
+		$("#single .toolbar H1").empty(); // empty single H1 title for autotitle
+		$("#singleappend").empty();
+		//alert('is empty')
 
             var wp_url = PLUGIN_URL + 'get_post.php';
 			
 			//alert('New sid = '+sid);
 			showLoading();
-			//alert('showloading');
+			//alert(s);
 			//var sid = $(this).attr('id'); 			
 		
 			$.getJSON(wp_url + '?s='+s+'&id=' + sid, function(data) {
@@ -348,7 +343,7 @@ $("#singleappend").empty();
 
                     if (post.title !== undefined) {
                         
-						var post_html = '<li class="blog-title arrow"><a Onclick="send(' + post.id + ')" id=' + post.id + ' href="#single">';	
+						var post_html = '<li class="blog-content arrow"><a onClick="send(' + post.id + ')" id=' + post.id + ' href="#single">';	
                         post_html += post.get_thumb;
                			post_html += '<h2>' + post.title + '</h2>';
                 		post_html += '<p>' + post.excerpt + '</p></a></li>';
@@ -365,6 +360,78 @@ $("#singleappend").empty();
     } //direction in end
 
 }); //pageAnimationEnd
+
+
+// Post List
+$('#pages').bind('pageAnimationEnd', function(e, info) {
+
+if ((info.direction == 'in') && ($('ul#pages_append').html())) { //if not empty don't load ajax
+
+$("#single .toolbar H1").empty(); // empty single H1 title for autotitle
+$("#singleappend").empty();
+
+		if (myScroll) {
+        	myScroll.destroy();
+            myScroll = null;
+        }
+
+        if ($('div#' + e.target.id + ' #wrapper').get(0)) {
+         	setTimeout(function() {
+            	myScroll = new iScroll($('div#' + e.target.id + ' #wrapper').get(0));
+			}, 0);
+        }
+
+}
+
+	if ((info.direction == 'in') && ($('ul#pages_append').is(':empty'))) { //if empty load ajax
+		$("#single .toolbar H1").empty(); // empty single H1 title for autotitle
+		$("#singleappend").empty();
+
+            var wp_url = PLUGIN_URL + 'get_post.php';
+			
+			//alert('New sid = '+sid);
+			showLoading();
+			//alert(s);
+			//var sid = $(this).attr('id'); 			
+		
+			$.getJSON(wp_url + '?id=' + sid, function(data) {
+			//$.getJSON(wp_url + '?id=' + sid, function(data) {
+			//alert('getjson');
+			
+		if (myScroll) {
+        	myScroll.destroy();
+            myScroll = null;
+        }
+
+        if ($('div#' + e.target.id + ' #wrapper').get(0)) {
+         	setTimeout(function() {
+            	myScroll = new iScroll($('div#' + e.target.id + ' #wrapper').get(0));
+			}, 0);
+        }
+
+
+                $.each(data.posts, function(i, post) {
+
+                    if (post.title !== undefined) {
+                        
+						var post_html = '<li class="blog-content arrow"><a onTouchStart="send(' + post.id + ')" id=' + post.id + ' href="#single">';	
+                        post_html += post.get_thumb;
+               			post_html += '<h2>' + post.title + '</h2>';
+                		post_html += '<p>' + post.excerpt + '</p></a></li>';
+						
+						$('#pages_append').append(post_html);						
+	
+                    } // if post.title !== undefined				
+
+                }); //each
+				hideLoading();
+				//alert('hideloading');
+            }); //getjson
+		
+    } //direction in end
+
+}); //pageAnimationEnd
+
 
 	$('#search').bind('pageAnimationEnd', function(e, info) {
 
@@ -395,15 +462,33 @@ $("#singleappend").empty();
 // Home 
 $(document).ready(function() {
 
+	$('.scroll').wrap('<div id="wrapper" />').attr('id', 'scroller');
+	
+	// if text input field value is not empty show the "X" button
+	$("#searchid").keyup(function() {
+		$("#x").show();
+		//if ($.trim($("#search").val()) == "") {
+		if ($("#searchid").val() == "") {
+			$("#x").hide();
+		}
+	});
+	// on click of "X", delete input field value and hide "X"
+$("#x").bind(clickEventType, function() {
+	$("#searchid").focus().val("");
+	$(this).hide();
+}); //X BUTTON END
+
     var wp_url = PLUGIN_URL + 'get_post.php';
 
-    $.getJSON(wp_url + '?', function(data) {
+    showLoading();
+	
+	$.getJSON(wp_url + '?', function(data) {
 
         $.each(data.posts, function(i, post) {
 
             if (post.title !== undefined) {
 
-                var post_html = '<li class="blog-title arrow"><a onTouchStart="send(' + post.id + ')" id=' + post.id + ' href="#single">';
+                var post_html = '<li class="blog-content arrow"><a onTouchStart="send(' + post.id + ')" id=' + post.id + ' href="#single">';
                 //post_html += '<div class="float_right">' + post.date + '</div>';
                 post_html += post.get_thumb;
                 post_html += '<h2>' + post.title + '</h2>';
@@ -411,12 +496,11 @@ $(document).ready(function() {
 
                 // Append html string to container div 
                 $('#allpost').append(post_html);
-				
-				
-                //if ( i == 5 ) return false;      
+                //if ( i == 5 ) return false;								
             }
         });
-	
+				
+			hideLoading();
 			setTimeout(function () { myScroll.refresh(); }, 100);
 
     });
@@ -431,12 +515,11 @@ $(document).ready(function() {
 <div id="page">
 
 <div class="searchbox">
-  <form action="" method="get">
-        <input id="searchid" id="searchid" name="s" placeholder="Search" type="search" autocapitalize="off" />
-        <input id="submit" type="hidden" />
+  	<div id="form">
+        <input id="searchid" name="s" placeholder="Search" type="search" autocapitalize="off" />     
         <span id="x"></span>
-    </form>
- 	<div onClick="moveDown();" class="my_button" id="my_button">Search</div>   
+    
+</div>     <a href="#showposts" class="nodecoration"><div onTouchStart="moveDown();" class="my_button" id="my_button">Search</div></a> 
 </div>
 
 <div id="jqt">
@@ -448,7 +531,7 @@ $(document).ready(function() {
 			 <a class="button slideup" id="infoButton" href="#about">About</a>
         </div>
             <div class="scroll">
-			<ul class="edgecontent" id="allpost"></ul>
+			<ul class="edgecontent allpost" id="allpost"></ul>
             </div>
 	</div>
 <!-- End #home -->
@@ -480,32 +563,39 @@ $(document).ready(function() {
 	<div id="showposts">
 		<div class="toolbar">
 			<h1></h1>
-            <a class="back" href="#">Sections</a>		</div>
+            <a class="back" href="#">Sections</a>
+        </div>
 		<div class="scroll">
-			<ul class="edgecontent" id="postcat"></ul>
+			<ul class="edgecontent allpost" id="postcat"></ul>
 		</div>
 	</div>
 <!-- End #showposts -->
-  
+
+<!-- #pages -->
+	<div id="pages">
+		<div class="toolbar">
+			<h1></h1>
+        </div>
+		<div class="scroll">
+			<ul class="edgecontent allpost" id="pages_append"></ul>
+		</div>
+	</div>
+<!-- End #pages -->
  
 <!-- #search -->
    <form id="search"  class="form">
 		<div class="toolbar">
-			<h1></h1>
-			 <a class="cancel" href="#">Cancel</a>
+			<h1>Search</h1>
         </div>
 		<div class="scroll">
-                    <ul class="rounded" id="dontscroll">
-                        <li><input type="search" id="searchid" name="s" value="" placeholder="Search" /></li>
-                    </ul>
-                    <a style="margin-top: 10px; margin-bottom: 10px; color:rgba(0,0,0,.9)" href="#showposts" id="submit" class="whiteButton">Submit</a>
-                </div>
+			<ul class="edgetoedge"><li>Search <?php echo get_bloginfo( 'name' ) ?></li></ul>     
+        </div>
     </form>
 <!-- End #search -->
     
     <!-- #about -->
     <div id="about" class="selectable">
-		<p><img src="<?php echo $plugin_url ?>/img/apptouch-icon.png" /></p>
+		<p><img src="<?php echo $plugin_url ?>/img/iPhoneIcon_Small.png" /></p>
 		<p><strong><a href="http://wpapptouch.com" target="_blank">WPapptouch.com</a></strong><br>
 		  Version 0.1 beta<br>
 	  <a href="http://wpapptouch.com" target="_blank">By Gino Côté</a></p>
@@ -525,8 +615,8 @@ $(document).ready(function() {
      <!-- Action & navigation -->
 <li><a href="#home" class="current flip"><strong>Home</strong><div class="home"></div></a></li>    
 <li><a href="#categories" class="flip"><strong>Sections</strong><div class="list"></div></a></li>
-<li><a onTouchStart="send('pages')" href="#showposts" class="flip"><small class="badge right">6</small><strong>Pages</strong><div class="page"></div></a></li>
-<li><a onClick="moveDown();" class=""><strong>Search</strong><div class="search2"></div></a></li>
+<li><a onTouchStart="send('pages')" href="#pages" class="flip"><small class="badge right">6</small><strong>Pages</strong><div class="page"></div></a></li>
+<li><a href="#search" class=""><strong>Search</strong><div class="search2"></div></a></li>
 <li><a href="#about" id="li_tab" class="flip"><strong>More</strong><div class="more"></div></a></li>
     </ul>
 </nav>
@@ -535,40 +625,18 @@ $(document).ready(function() {
 //Show search
 var visible = false;
 function moveDown() {
-    if(visible)
-    {
-        moveUp();
-    }
-    else
-    {
+
         var height = $(".searchbox").height();
         $(".searchbox").css('-webkit-transform', 'translate3d(0px,+46px,0)');
 		//$(".searchbox").show().css('-webkit-transform', 'translate3d(0px,+46px,0)');
 		//$('#element').css('z-index'); 
-    }
-    visible = !visible;
+
 }
 function moveUp() {
     var height = $(".searchbox").height();
     $(".searchbox").css('-webkit-transform', 'translate3d(0px,0px,0)');
 	//$(".searchbox").show().css('z-index', '200').css('-webkit-transform', 'translate3d(0px,0px,0)');
 }
-
-	// if text input field value is not empty show the "X" button
-	$("#search").keyup(function() {
-		$("#x").show();
-		//if ($.trim($("#search").val()) == "") {
-		if ($("#search").val() == "") {
-			$("#x").hide();
-		}
-	});
-	// on click of "X", delete input field value and hide "X"
-	$("#x").click(function() {
-		//$("#search").val("");
-		$("#search").focus().val("");
-		$(this).hide();
-	});
-
 
 //ajax loading animation
 function showLoading() {
@@ -583,10 +651,10 @@ function hideLoading() {
 
 function nextprev(prev,next,cat) {
 	if (prev === null) {
-  		$("#previous").empty();
+  		$(".previous").empty();
 	}
 	if (next === null) {
-  		$("#next").empty();
+  		$(".next").empty();
 	}
 	if (cat === null) {
   		$("#cat").empty();
@@ -595,37 +663,74 @@ function nextprev(prev,next,cat) {
 function send(x) {
     sid = x;
 	//alert ('Fonction '+sid);
-	if(isNaN(sid)){
-	$("#showposts .toolbar H1").empty(); // marche pas parce que pas encole loader, peut etre if direction out
-	$("#postcat").empty();
+	if(isNaN(sid)){ //not a number
+	$("#pages .toolbar H1").empty(); // marche pas parce que pas encole loader, peut etre if direction out
+	//$("ul#postcat").html(); 
+	$("#pages .toolbar H1").html('Pages'); 
 	//alert ('is not a number');
-	}
-	return false;
+	} else {
+	//$("#showposts .toolbar H1").empty();
+	} 
+	//return false;
 }
+
 //Hack, ajax jsonp search
-$("#my_button").tap(function(e) { // onclick event to the submit button - .tap or .click.
-    var s = $("#searchid").val(); // get the user-entered search term
-	sget(s)
+$("#my_button").click(function(e) { // onclick event to the submit button - .tap or .click.
+    $("ul#postcat").empty();
+	s = $("#searchid").val(); // get the user-entered search term
+	//sget(s)
 	$('#showposts .toolbar H1').html(s);
+	$("#pages .toolbar H1").html('Search'); 
+	$("#showposts .toolbar .back").html('Search');
 	//alert(s);
 });
 
-function sget(v) {
-    s = v;
-	//$("#postcat").empty();
-}
+function target_blank() {
+//make all external link blank & add Hash to internal
+	$("#single .blog-content a").attr("href", function(i, href) {
+    	if( window.location.hostname === this.hostname ) {
+			$(this).attr('rel', 'url'); 
+			$(this).attr('id', href); 
+        	return "#";
+    	}else{
+			$(this).attr('target', '_blank'); 
+			return href;
+		}	
+	});
+	//alert for external link
+	$('a[target="_blank"]').bind('click', function() {
+		if (confirm('This External link opens in a new window.')) {
+			return true;
+		} else {
+			return false;
+		}
+	});	
 	
-//
-function getid() {
-$(".singlenext").bind("click", function(e) {
-//$(".singlenext").click(function(e) { // onclick event to the submit button.
-    //var s = $("#search").val(); // get the user-entered search term
+	//$('#singleappend a').bind('click', function() {
+	$('a[rel="url"]').bind('click', function() {
+		//var id_url = $(this).attr('rel');
+		var id_url = $(this).attr('id');
+		get_id_url(id_url);
+		//alert(id_url);
+	});	
 	
-	sid = (this.id);
-    //alert(sid);
-	//$("#singleappend").empty();
+	$('#single .blog-content a >  img').unwrap(); // remove images link
 
-    //alert(myUrl);
+}
+
+function getid() {
+	//$(".singlenext").bind(clickEventType, function(e) {	
+	$('.singlenext').bind('click', function() {
+		var sid = (this.id);
+		//alert(sid);
+		get_id_url(sid);	
+	}); //end
+}
+
+function get_id_url(id_url) {
+sid = id_url;
+//var sid = encodeURIComponent(id_url);
+//alert(sid);
     var wp_url = PLUGIN_URL + 'get_single.php';
 	
 	showLoading();
@@ -636,37 +741,43 @@ $(".singlenext").bind("click", function(e) {
 
             if (post.title !== undefined) {
 
-                var post_html = '<ul class="edgefullcontent"><li class=""><div id="previous"><a class="singlenext" id="' + post.prev_post + '" href="#"><span class="nxtarrow"><</span> PREVIOUS</a></div><div id="next"><a class="singlenext" id="' + post.next_post + '" href="#">NEXT <span class="nxtarrow">></span> </a></div></li>';
+                var post_html = '<ul class="edgefullcontent">';
 				//var post_html = '<ul class="rounded"><li class=""><div class="singlenext" id="' + post.next_post + '">NEXT</div></li>';
-                post_html += '<li class="blog-title">';
+                post_html += '<li class="blog-content">';
 				post_html += '<span class="info_post" id="cat" style=" float: right;  padding-right: 5px ;" > ' + post.category + '</span>';
                 post_html += '<span class="info_post">' + post.date + '</span>';
                 post_html += '<h1>' + post.title + '</h1>';					
 				if (post.fimg) post_html += post.fimg ;
-                post_html += '<p>' + post.content + '</p></li></ul>';
+                post_html += '<p>' + post.content + '</p></li>';
+				post_html += '<li class=""><div class="previous"><a class="singlenext" id="' + post.prev_post + '" href="#"><span class="nxtarrow"><</span> PREVIOUS</a></div><div class="next"><a class="singlenext" id="' + post.next_post + '" href="#">NEXT <span class="nxtarrow">></span> </a></div></li></ul>';
 				
 				var post_title = post.title ;
 				
                 //$("#single .toolbar H1").empty(); // empty single H1 title for autotitle
 				$('#singleappend').html(post_html);
 				$('#single .toolbar H1').html(post_title);
+
+				getid();	
 				
-				hideLoading();
-				getid();
 				nextprev(post.prev_post, post.next_post, post.category);
 
             } // if post.title !== undefined
 			videosize();
-			setTimeout(function () {myScroll.refresh();}, 2000);
+			
         }); //each	
 		
+		myScroll.scrollTo(0, 0, 0); //last number timer
+
+		setTimeout(function () {myScroll.refresh();}, 2000);
+		hideLoading();
+		target_blank();
+		
     }); //getjson
-}); //end
 }
 
 </script>
 <script type='text/javascript' src='<?php echo $plugin_url ?>/src/itabbar.js'></script>
-<script type='text/javascript' src='<?php echo $plugin_url ?>/src/fullscreen.js'></script>  
+<script type='text/javascript' src='<?php echo $plugin_url ?>/src/functions.min.js'></script>  
 
 </body>
 </html>
