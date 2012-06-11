@@ -49,5 +49,5 @@ Send all support questions to the author: info [at] wpapptouch.com.
 
 1. WPapptouch - Home page, Post and Search page.
 2. WPapptouch - Categories.
-3. WPapptouch - Single, Post.
+3. WPapptouch - Single, Page.
 4. WPapptouch - iPhone Native app look and feel.
