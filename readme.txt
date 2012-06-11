@@ -11,7 +11,7 @@ WPapptouch is a WordPress plugin & theme to transform your WordPress website to 
 
 == Description ==
 
-WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. It works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more.
+WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. It works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more. Video demo here: http://wpapptouch.com .
 
 WPapptouch is a WordPress theme and plugin to transform your WordPress web site to a Native like application for mobile. WPapptouch is the fastest mobile WordPress themes.
 
