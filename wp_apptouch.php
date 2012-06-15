@@ -112,8 +112,6 @@ $thisversion = wapt_get_version();
 
 $oldversion = get_option("wapt_current_version","Default");
 update_option("wapt_current_version", $thisversion);
-echo $oldversion;
-echo $thisversion;
 
 //$thisversion = 0.5; // test update
 
