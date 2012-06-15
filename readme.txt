@@ -5,7 +5,7 @@ Author: Gino Cote
 Author URI: http://wpapptouch.com
 Requires at least: 2.8
 Tested up to: 3.3.2
-Stable tag: 0.3
+Stable tag: 0.4
 
 WPapptouch is a WordPress plugin & theme to transform your WordPress website to a Native like application for mobile.
 
@@ -51,3 +51,12 @@ Send all support questions to the author: info [at] wpapptouch.com.
 2. WPapptouch - Categories.
 3. WPapptouch - Single, Page.
 4. WPapptouch - iPhone Native app look and feel.
+
+== Changelog ==
+ 
+= 0.3 =
+* Add screenshot.
+* Fix white UL background.
+ 
+= 0.4 =
+* Fix to the right path.
