@@ -112,7 +112,7 @@ function get_img($postid, $content) {
 
 		if(empty($first_img)){ //Defines a default image
  			//$img_dir = get_bloginfo('template_directory');
-    	$first_img = '<img src="'.get_bloginfo("url").'/wp-content/plugins/wp_apptouch/img/default.png'.'" alt="default" title="default">';
+    	$first_img = '<img src="'.get_bloginfo("url").'/wp-content/plugins/wpapptouch/img/default.png'.'" alt="default" title="default">';
   		}
 
   return $first_img;	
