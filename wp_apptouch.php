@@ -115,7 +115,8 @@ update_option("wapt_current_version", $thisversion);
 
 //$thisversion = 0.5; // test update
 
-if ($oldversion < $thisversion ) {
+//if ($oldversion < $thisversion ) {
+if ( ($oldversion < $thisversion) && (strlen($oldversion) >= 1) ) {
 	wapt_activate();
 	// Display success message.
 	echo '<div class="updated fade"><p><strong>WPapptouch have been updated.</strong></p></div>';
