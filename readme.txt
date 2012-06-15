@@ -25,8 +25,12 @@ Mobile WordPress theme who have a Native application look and feel. Fullscreen m
 
 == Instruction ==
 
+== Update == 
+At each plugin update, go to the WPaptouch setting page. There you have nothing to do, just check if all setting is okay, you just trigger a action to help WPapptouch update correctly visiting the setting page.
+
 == It doesn't work? == 
-WPapptouch plugin create a folder in your Wordpress themes folder ('/wp-content/themes/wp_apptouch'). if after the installation this folder is not created automatically, create a folder on your server with free FTP software like filezilla. Name it wp_apptouch, copy these 3 files from your wp_apptouch plugin folder (index.php, style.css, screenshot.png) to the themes folder you just named wp_apptouch. Return to the WPapptouch setting, from 'Alternative themes to be displayerd' select the wp_appTouch theme.
+WPapptouch plugin create a folder in your Wordpress themes folder ('/wp-content/themes/wp_apptouch'). if after the installation this folder is not created automatically, create a folder on your server with free FTP software like filezilla. Name it wp_apptouch, copy these 3 files from your wp_apptouch plugin folder (index.html, style.css, screenshot-1.jpg) to the themes folder you just named wp_apptouch. Rename the file extention index.html to index.php 
+Return to the WPapptouch setting, from 'Alternative themes to be displayerd' select the wp_appTouch theme.
 
 == How can i change the themes color and design? == 
 WPapptouch will come with a pro version with many more options like: Color options, mobile ads, users Comments, favorites articles, (*Phonegap integration)

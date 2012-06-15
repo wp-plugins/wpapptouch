@@ -112,12 +112,11 @@ $thisversion = wapt_get_version();
 
 $oldversion = get_option("wapt_current_version","Default");
 update_option("wapt_current_version", $thisversion);
-echo $oldversion;
-echo $thisversion;
 
 //$thisversion = 0.5; // test update
 
-if ($oldversion < $thisversion ) {
+//if ($oldversion < $thisversion ) {
+if ( ($oldversion < $thisversion) && (strlen($oldversion) >= 1) ) { // if $oldversion is empty, lets activation hook do is job
 	wapt_activate();
 	// Display success message.
 	echo '<div class="updated fade"><p><strong>WPapptouch have been updated.</strong></p></div>';
@@ -133,6 +132,7 @@ if ($oldversion < $thisversion ) {
 		<p>
 			<label>User agent strings to look for (one per line, Respect devices capital letters):</label><br/>
 		    <textarea name="wapt_user_agents" cols="40" rows="5"><?php
+				if(!get_option('wapt_user_agents')) echo "iPhone\niPad\niPod\nAndroid";
 				foreach($userAgents as $userAgent)
 					echo htmlspecialchars($userAgent)."\n";
 			?>
@@ -158,9 +158,9 @@ if ($oldversion < $thisversion ) {
 		
 	</form>
 	
-	<p>For a list of user agents for mobile phones, look <a href="http://en.wikipedia.org/wiki/List_of_user_agents_for_mobile_phones">here</a>.</p>
+	<p>For a list of user agents for mobile phones, look <a href="http://weloveseo.com.au/useragents.php" target="_blank">here</a>.</p>
 
-	</div>
+</div>
   
 	<?php
 
@@ -171,27 +171,30 @@ register_activation_hook( __FILE__, 'wapt_activate' );
 
 function wapt_activate () {
 
-if (!file_exists( ABSPATH . 'wp-content/themes/wp_apptouch/')) {
+	if (!file_exists( ABSPATH . 'wp-content/themes/wp_apptouch/')) {
 		mkdir( ABSPATH . 'wp-content/themes/wp_apptouch', 0777);
-
-		function copyfiles($file,$newfile){
-			if (!copy($file, $newfile)) {
-    		echo "La copie $file du fichier a échoué...\n";
-			}
-		}
+	} 
+	
 		//copyfiles($file,$newfile);
 		$index = plugins_url( 'index.html', __FILE__ );
 		$style = plugins_url( 'style.css', __FILE__ );
-		//$screenshot = plugins_url( 'screenshot-1.jpg', __FILE__ );
+		$screenshot = plugins_url( 'screenshot-1.jpg', __FILE__ );
 
 		copyfiles($index,ABSPATH . 'wp-content/themes/wp_apptouch/index.php');
 		copyfiles($style,ABSPATH . 'wp-content/themes/wp_apptouch/style.css');
-		//copyfiles($screenshot,ABSPATH . 'wp-content/themes/wp_apptouch/screenshot-1.jpg');
+		copyfiles($screenshot,ABSPATH . 'wp-content/themes/wp_apptouch/screenshot-1.jpg');
+	
+	if(!get_option('wapt_user_agents')) update_option("wapt_user_agents","iPhone\$|\$iPad$|\$iPod$|\$Android");
 }
-
-update_option("wapt_user_agents","iPhone\$|\$iPad$|\$iPod$|\$Android");
+		
+// Copy files function
+function copyfiles($file,$newfile){
+	if (@!copy($file, $newfile)) {
+	echo '<div class="error fade"><p><strong>Failed to copy '.$file.'. You should copy 3 files to the wp_apptouch themes folder. Please read the plugin readme.txt file, Read Instruction "It doesn\'t work?" </strong></p></div>';
+	}
 }
-
+		
+		
 add_action('plugin_action_links_' . plugin_basename(__FILE__), 'wapt_adminbar');
 function wapt_adminbar($links){
 	$new_links = array();
