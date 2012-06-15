@@ -54,9 +54,9 @@ Send all support questions to the author: info [at] wpapptouch.com.
 
 == Changelog ==
  
+= 0.4 =
+* Fix to the right path.
+ 
 = 0.3 =
 * Add screenshot.
 * Fix white UL background.
- 
-= 0.4 =
-* Fix to the right path.
