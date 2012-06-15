@@ -35,7 +35,7 @@ WPapptouch will come with a pro version with many more options like: Color optio
 
 == Installation ==
 
-1. Upload WPapptouch to your plugins directory. ('/wp-content/plugins/')
+1. Upload the folder wapptouch in the zip file to your plugins directory. ('/wp-content/plugins/')
 2. Activate the plugin from your Plugins page.
 3. Add image to your posts. Go to the setting page to set options.
 
@@ -54,9 +54,9 @@ Send all support questions to the author: info [at] wpapptouch.com.
 
 == Changelog ==
  
-= 0.4 =
-* Fix to the right path.
- 
 = 0.3 =
 * Add screenshot.
 * Fix white UL background.
+ 
+= 0.4 =
+* Fix to the right path.
