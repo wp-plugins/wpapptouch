@@ -18,6 +18,13 @@ add_action( 'init', 'wapt_add_image_size' );
  * theme based on the user agent.
  */
 
+//Plugin version
+function wapt_get_version() {
+    $plugin_data = get_plugin_data( __FILE__ );
+    $plugin_version = $plugin_data['Version'];
+    return $plugin_version;
+}
+
 function wapt_image_plugin_detail_image_size() {
 	return array(
 		'name' => 'wp_small',
@@ -100,11 +107,27 @@ function displaywpapptouchOption() {
 		echo '<div class="updated fade"><p><strong>Settings have been saved.</strong></p></div>';
 	}
 
+//Check for updating	
+$thisversion = wapt_get_version();
+
+$oldversion = get_option("wapt_current_version","Default");
+update_option("wapt_current_version", $thisversion);
+echo $oldversion;
+echo $thisversion;
+
+//$thisversion = 0.5; // test update
+
+if ($oldversion < $thisversion ) {
+	wapt_activate();
+	// Display success message.
+	echo '<div class="updated fade"><p><strong>WPapptouch have been updated.</strong></p></div>';
+}
+
 ?>
 
 	<div class="wrap">
 
-	<h2>WP-Apptouch Themes Plugin Options</h2>
+	<h2>WP-Apptouch Themes Plugin Options (<?php echo $thisversion; ?>)</h2>
 
 	<form method="POST" action="">
 		<p>
@@ -159,11 +182,11 @@ if (!file_exists( ABSPATH . 'wp-content/themes/wp_apptouch/')) {
 		//copyfiles($file,$newfile);
 		$index = plugins_url( 'index.html', __FILE__ );
 		$style = plugins_url( 'style.css', __FILE__ );
-		$screenshot = plugins_url( 'screenshot.png', __FILE__ );
+		//$screenshot = plugins_url( 'screenshot-1.jpg', __FILE__ );
 
 		copyfiles($index,ABSPATH . 'wp-content/themes/wp_apptouch/index.php');
 		copyfiles($style,ABSPATH . 'wp-content/themes/wp_apptouch/style.css');
-		copyfiles($screenshot,ABSPATH . 'wp-content/themes/wp_apptouch/screenshot.png');
+		//copyfiles($screenshot,ABSPATH . 'wp-content/themes/wp_apptouch/screenshot-1.jpg');
 }
 
 update_option("wapt_user_agents","iPhone\$|\$iPad$|\$iPod$|\$Android");
