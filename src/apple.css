@@ -1274,6 +1274,11 @@ color: white;
     -webkit-border-image: url(../img/UIBackPressed.png) 0 6 0 14;
 }
 
+#jqt ul li{
+	background-color: #FFFFFF;	
+}	
+
+
 .searchbox {
 position:absolute;
     top:-46px;
