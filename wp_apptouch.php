@@ -8,7 +8,7 @@ Description: WP-appTouch - Web application for Wordpress who look like native ap
 Version: 0.7
 */
 
-// Activate theme switching.
+// Activate theme switching. 
 add_filter('template', 'waptTheme');
 add_filter('option_template', 'waptTheme');
 add_filter('option_stylesheet', 'waptTheme');
