@@ -5,7 +5,7 @@ Plugin URI: http://wpapptouch.com/
 Author: Gino Cote
 Author URI: http://wpapptouch.com/
 Description: WP-appTouch - Web application for Wordpress who look like native applications.
-Version: 0.7
+Version: 0.5
 */
 
 // Activate theme switching. 
