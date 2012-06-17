@@ -58,6 +58,9 @@ Send all support questions to the author: info [at] wpapptouch.com.
 
 == Changelog ==
 
+= 0.6 =
+* Fix Autotitle.
+
 = 0.4 =
 * Fix to the right path.
 
