@@ -38,16 +38,16 @@ html, body {
 <link rel="stylesheet" href="<?php echo $plugin_url ?>/src/itabbar.css"/><!--CSS order are important -->
 <link rel="stylesheet" href="<?php echo $plugin_url ?>/src/style.min.css"/>
 
+<link rel="stylesheet" href="<?php echo $plugin_url ?>/src/add2home.css">
+<script type="text/javascript" src="<?php echo $plugin_url ?>/src/add2home.js" charset="utf-8"></script>
+
 <script type="text/javascript" src="<?php echo $plugin_url ?>/src/iscroll.min.js"></script>
-<script type='text/javascript' src='<?php echo $plugin_url ?>/src/zepto.min.js'></script> 
+<script type='text/javascript' src='<?php echo $plugin_url ?>/src/zepto.min.0.8.js'></script> 
 <script type='text/javascript' src='<?php echo $plugin_url ?>/src/jqtouch.min.js'></script>  
 
 <script type='text/javascript' src='<?php echo $plugin_url ?>/src/jqt.autotitles.min.js'></script>  
 
 <script type='text/javascript' src='<?php echo $plugin_url ?>/src/videoresize.js'></script> 
-
-<link rel="stylesheet" href="<?php echo $plugin_url ?>/src/add2home.css">
-<script type="text/javascript" src="<?php echo $plugin_url ?>/src/add2home.js" charset="utf-8"></script>
 
 <script type="text/javascript">
 var INDEX_URL = '<?php echo $template_url; ?>/'; // Main url
@@ -409,7 +409,7 @@ $("#singleappend").empty();
 
                     if (post.title !== undefined) {
                         
-						var post_html = '<li class="blog-content arrow"><a onTouchStart="send(' + post.id + ')" id=' + post.id + ' href="#single">';	
+						var post_html = '<li class="blog-content arrow"><a onClick="send(' + post.id + ')" id=' + post.id + ' href="#single">';	
                         post_html += post.get_thumb;
                			post_html += '<h2>' + post.title + '</h2>';
                 		post_html += '<p>' + post.excerpt + '</p></a></li>';
@@ -483,7 +483,7 @@ $("#x").bind(clickEventType, function() {
 
             if (post.title !== undefined) {
 
-                var post_html = '<li class="blog-content arrow"><a onTouchStart="send(' + post.id + ')" id=' + post.id + ' href="#single">';
+                var post_html = '<li class="blog-content arrow"><a onClick="send(' + post.id + ')" id=' + post.id + ' href="#single">';
                 //post_html += '<div class="float_right">' + post.date + '</div>';
                 post_html += post.get_thumb;
                 post_html += '<h2>' + post.title + '</h2>';
@@ -596,7 +596,7 @@ $("#x").bind(clickEventType, function() {
 	  <a href="http://wpapptouch.com" target="_blank">By Gino Côté</a></p>
 	  <p><em>Create powerful Wordpress mobile web apps with<br> WPapptouch.</em></p>
 		<p>
-			<a target="_blank" href="http://twitter.com/wpapptouch">@wpapptouch on Twitter</a></p>
+			<a href="http://twitter.com/wpapptouch" target="_blank">@wpapptouch on Twitter</a></p>
 		<p><br><a href="#" class="grayButton goback">Close</a></p>
 	</div>
     <!-- End #about -->
