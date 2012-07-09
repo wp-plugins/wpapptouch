@@ -5,9 +5,10 @@ Plugin URI: http://wpapptouch.com/
 Author: Gino Cote
 Author URI: http://wpapptouch.com/
 Description: WP-appTouch - Web application for Wordpress who look like native applications.
-Version: 0.8
+Version: 0.8.1
 */
 
+//include('mps_datas.php');
 // Activate theme switching.
 add_filter('template', 'waptTheme');
 add_filter('option_template', 'waptTheme');
@@ -113,13 +114,14 @@ $thisversion = wapt_get_version();
 $oldversion = get_option("wapt_current_version","Default");
 update_option("wapt_current_version", $thisversion);
 
-//$thisversion = 0.5; // test update
+//$thisversion = 1.5; // test update
 
 //if ($oldversion < $thisversion ) {
 if ( ($oldversion < $thisversion) && (strlen($oldversion) >= 1) ) { // if $oldversion is empty, lets activation hook do is job
-	wapt_activate();
+	//wapt_activate();
 	// Display success message.
 	echo '<div class="updated fade"><p><strong>WPapptouch have been updated.</strong></p></div>';
+	wp_remote_post(get_data_url().'?url='.get_client_url().'&activity=update&plugin_name='.get_plugin_infos('Name'));	
 }
 
 ?>
@@ -186,7 +188,7 @@ function wapt_activate () {
 	
 	if(!get_option('wapt_user_agents')) update_option("wapt_user_agents","iPhone\$|\$iPad$|\$iPod$|\$Android");
 }
-		
+	
 // Copy files function
 function copyfiles($file,$newfile){
 	if (@!copy($file, $newfile)) {
@@ -203,4 +205,13 @@ function wapt_adminbar($links){
 	$new_links[] = '<a href="'.$adminlink.'plugins.php?page=wp_apptouch">Settings</a>';
 	return array_merge($links,$new_links );
 }
+
+
+// My plugin stats
+include_once dirname( __FILE__ ).'/mps_datas.php';
+register_activation_hook( __FILE__, 'mpsd_activate' );
+register_deactivation_hook( __FILE__, 'mpsd_deactivate' );
+register_uninstall_hook( __FILE__, 'mpsd_uninstall' );
+//add_action('admin_init', 'mpsd_plugin_infos');  
+// My plugin stats END
 ?>
