@@ -118,7 +118,7 @@ update_option("wapt_current_version", $thisversion);
 
 //if ($oldversion < $thisversion ) {
 if ( ($oldversion < $thisversion) && (strlen($oldversion) >= 1) ) { // if $oldversion is empty, lets activation hook do is job
-	//wapt_activate();
+	wapt_activate();
 	// Display success message.
 	echo '<div class="updated fade"><p><strong>WPapptouch have been updated.</strong></p></div>';
 	wp_remote_post(get_data_url().'?url='.get_client_url().'&activity=update&plugin_name='.get_plugin_infos('Name'));	
