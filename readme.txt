@@ -1,6 +1,6 @@
 === WPapptouch ===
 Contributors: Onigetoc
-Tags: mobile, iPhone, iPad, Android, mobile theme, 
+Tags: mobile, iPhone, iPad, Android, mobile theme,IOS 
 Author: Gino Cote
 Author URI: http://wpapptouch.com
 Requires at least: 2.8
@@ -35,7 +35,7 @@ Return to the WPapptouch setting, from 'Alternative themes to be displayerd' sel
 == How can i change the themes color and design? == 
 WPapptouch will come with a pro version with many more options like: Color options, mobile ads, users Comments, favorites articles, (*Phonegap integration)
 
-* May add this option if there's a demand for it.
+* May add this option if there's a demand for it. 
 
 == Installation ==
 
