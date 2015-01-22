@@ -11,28 +11,29 @@ WPapptouch is a WordPress plugin & theme to transform your WordPress website to 
 
 == Description ==
 
-WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. WPapptouch is the faster and the most realistic mobile theme, it works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more. Video demo here: http://wpapptouch.com
-
-WPapptouch is a WordPress theme and plugin to transform your WordPress web site to a Native like application for mobile. WPapptouch is the fastest and the most realistic mobile theme for WordPress.
-
-Mobile WordPress theme who have a Native application look and feel. Fullscreen mode for WPapptouch give your users a mobile experience they are used to with real Native Application on Iphone, Ipad and Android.
-
-* Native app look and feel.
-* Devices detection. You can choose witch devices will see the WPapptouch themes.
-* WPapptouch is the fastest mobile themes on the market.
-* Easy to install. Plug and play.
-* Thumbnails creation for WPapptouch themes to make your mobile app even faster and more optimized for mobile navigation.
-
 Pro Version.
 I created a brand new mobile theme for WordPress, faster, better and look like a real app. <a href="http://mobilypress.com/" rel="nofollow">http://mobilypress.com/</a></p>
 Up to 4 times faster than any WordPress mobile theme.
-  Features:
+Features:
 * Wordpress mobile theme who behavior and feel like a real app.
 * Insert your Vimeo, Youtube or Dailymotion Videos Channels.
 * You can add any RSS feeds to MobilyPress theme. Every RSS feed will be added to your mobile menu.
 
 demo: <a href="http://www.allotoi.com/">http://www.allotoi.com/</a> (see on mobile or tablet)
 Youtube video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
+
+
+WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. WPapptouch is the faster and the most realistic mobile theme, it works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more. Video demo here: http://wpapptouch.com
+
+WPapptouch is a WordPress theme and plugin to transform your WordPress web site to a Native like application for mobile. WPapptouch is the fastest and the most realistic mobile theme for WordPress.
+
+Mobile WordPress theme who have a Native application look and feel. Fullscreen mode for WPapptouch give your users a mobile experience they are used to with real Native Application on Iphone, Ipad and Android.
+
+- Native app look and feel.
+- Devices detection. You can choose witch devices will see the WPapptouch themes.
+- WPapptouch is the fastest mobile themes on the market.
+- Easy to install. Plug and play.
+- Thumbnails creation for WPapptouch themes to make your mobile app even faster and more optimized for mobile navigation.
 
 == Instruction ==
 
