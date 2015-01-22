@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP AppTouch
-Plugin URI: http://wpapptouch.com/
+Plugin URI: http://mobilypress.com/
 Author: Gino Cote
-Author URI: http://wpapptouch.com/
+Author URI: http://mobilypress.com/
 Description: WP-appTouch - Web application for Wordpress who look like native applications.
-Version: 0.8.1
+Version: 0.8.2
 */
 
 //include('mps_datas.php');
