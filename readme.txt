@@ -21,8 +21,8 @@ Features:
 * Insert your Vimeo, Youtube or Dailymotion Videos Channels.
 * You can add any RSS feeds to MobilyPress theme. Every RSS feed will be added to your mobile menu.
 
-demo: <a href="http://www.allotoi.com/">http://www.allotoi.com/</a> (see on mobile or tablet)
-Youtube video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
+Pro version demo: <a href="http://www.allotoi.com/">http://www.allotoi.com/</a> (see on mobile or tablet)
+Pro version video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
 
 
 WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. WPapptouch is the faster and the most realistic mobile theme, it works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more.
