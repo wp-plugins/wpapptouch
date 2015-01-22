@@ -31,8 +31,8 @@ Up to 4 times faster than any WordPress mobile theme.
 * Insert your Vimeo, Youtube or Dailymotion Videos Channels.
 * You can add any RSS feeds to MobilyPress theme. Every RSS feed will be added to your mobile menu.
 
-demo: <a href="http://www.allotoi.com/" rel="nofollow">http://www.allotoi.com/</a> (see on mobile or tablet)
-Youtube video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA" rel="nofollow">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
+demo: <a href="http://www.allotoi.com/">http://www.allotoi.com/</a> (see on mobile or tablet)
+Youtube video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
 
 == Instruction ==
 
