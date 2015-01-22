@@ -14,7 +14,9 @@ WPapptouch is a WordPress plugin & theme to transform your WordPress website to 
 Pro Version.
 I created a brand new mobile theme for WordPress, faster, better and look like a real app. <a href="http://mobilypress.com/" rel="nofollow">http://mobilypress.com/</a></p>
 Up to 4 times faster than any WordPress mobile theme.
+
 Features:
+
 * Wordpress mobile theme who behavior and feel like a real app.
 * Insert your Vimeo, Youtube or Dailymotion Videos Channels.
 * You can add any RSS feeds to MobilyPress theme. Every RSS feed will be added to your mobile menu.
@@ -23,7 +25,7 @@ demo: <a href="http://www.allotoi.com/">http://www.allotoi.com/</a> (see on mobi
 Youtube video: <a href="https://www.youtube.com/watch?v=vL7aPMtWjAA">https://www.youtube.com/watch?v=vL7aPMtWjAA</a>
 
 
-WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. WPapptouch is the faster and the most realistic mobile theme, it works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more. Video demo here: http://wpapptouch.com
+WPapptouch is a Powerful, Professional WordPress mobile plugin & theme. WPapptouch is the faster and the most realistic mobile theme, it works by detecting devices like iPhones, iPods, Android & and more mobile platform. More themes will be available soon. WPapptouch comes packed with an impressive array of custom options and plugin allowing you to control WordPress mobile site look and feel. WPapptouch give your mobile user access your WordPress website to the Home page, Categories, Pages, Search, users Comments and more.
 
 WPapptouch is a WordPress theme and plugin to transform your WordPress web site to a Native like application for mobile. WPapptouch is the fastest and the most realistic mobile theme for WordPress.
 
@@ -59,7 +61,7 @@ WPapptouch will come with a pro version with many more options like: Color optio
 
 = Who can I contact for support? =
 
-Send all support questions to the author: info [at] wpapptouch.com.
+<a href="https://wordpress.org/support/plugin/wpapptouch">support</a>
 
 == Screenshots ==
 
