@@ -26,7 +26,9 @@ Mobile WordPress theme who have a Native application look and feel. Fullscreen m
 Pro Version.
 I created a brand new mobile theme for WordPress, faster, better and look like a real app. <a href="http://mobilypress.com/" rel="nofollow">http://mobilypress.com/</a></p>
 Up to 4 times faster than any WordPress mobile theme.
-  Features:
+
+Features:
+
 * Wordpress mobile theme who behavior and feel like a real app.
 * Insert your Vimeo, Youtube or Dailymotion Videos Channels.
 * You can add any RSS feeds to MobilyPress theme. Every RSS feed will be added to your mobile menu.
